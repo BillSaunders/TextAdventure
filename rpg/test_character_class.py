@@ -43,6 +43,7 @@ class testCharacter(unittest.TestCase):
         
     
     def test_Character_Constructor(self):
+        """ creates a basic Character and checks its attributes are set correctly"""
         print('test_character_Constructor starts')
         constructed_character = Character('characterName','characterDescription')
         self.assertEqual(constructed_character.name,'characterName')
@@ -52,6 +53,7 @@ class testCharacter(unittest.TestCase):
         print('test_character_Constructor ends')
 
     def test_Enemy_Constructor(self):
+        """ creates an Enemy subclass instance and checks its attributes"""
         print('test_Enemy_Constructor starts')
         constructed_character = Enemy('characterName','characterDescription')
         self.assertEqual(constructed_character.name,'characterName')
@@ -62,6 +64,7 @@ class testCharacter(unittest.TestCase):
         print('test_Enemy_Constructor ends')
 
     def test_Friend_Constructor(self):
+        """creates an Friend subclass instance and checks its attributes """
         print('test_Friend_Constructor starts')
         constructed_character = Friend('characterName','characterDescription')
         self.assertEqual(constructed_character.name,'characterName')
@@ -72,6 +75,7 @@ class testCharacter(unittest.TestCase):
         print('test_Friend_Constructor ends')
 
     def test_describe(self):
+        """ checks that the correct description is output"""
         print('test_describe() starts')
         ## Stores output from print() in fakeOutput
         with patch('sys.stdout', new=StringIO()) as self.fakeOutput:
@@ -83,18 +87,21 @@ class testCharacter(unittest.TestCase):
     
 
     def test_get_disposition(self):
+        """ checks that the method returns the disposition attribute"""
         print('test_get_disposition() starts')
         self.assertEqual(self.character1.get_disposition(),
                          self.character1.disposition)
         print('test_get_disposition() ends')
 
     def test_get_name(self):
+        """checks that the method returns the name attribute """
         print('test_get_name() starts')
         self.assertEqual(self.character1.name,
                          self.character1.get_name())
         print('test_get_name() ends')
 
     def test_set_conversation(self):
+        """ checks that the method updates the conversation attribute"""
         print('test_set_conversation() starts')
         conv = 'test conversation, words, punctuation'
         self.character1.set_conversation(conv)
@@ -104,6 +111,10 @@ class testCharacter(unittest.TestCase):
     
 
     def test_talk(self):
+        """ check that the correct message is output if the conversation
+    attribute is empty,
+    then checks that the correct message is output if the conversation
+    attribute is populated"""
         print('test_talk() starts')
         self.assertIsNone(self.character1.conversation)
         with patch('sys.stdout', new=StringIO()) as fakeOutput:
@@ -119,6 +130,14 @@ class testCharacter(unittest.TestCase):
         print('test_talk() ends ')
 
     def test_fight(self):
+        """ check the correct output message is displayed when...
+             you 1.  fight a base Character instance
+        when you 2.  fight a Friend subclass instance
+        when you 3.  fight an Enemy subclass instance
+        then for fightig the Enemy subclass, check that the victory returns
+        a True result and defeat returns a False result and
+        that the correct message is output in both cases
+         """
         print('test_fight() starts')
         print('Try fight with Character instance')  
         #expect name doesn't want to fight with you, returns True
@@ -152,6 +171,7 @@ class testCharacter(unittest.TestCase):
         print('test_fight() ends')
     
     def test_set_weakness(self):
+        """ check that the correct attribute is updated"""
         print('test_set_weakness() starts')
         weakness = 'testWeakness'
         self.enemy1.set_weakness(weakness)
@@ -159,6 +179,7 @@ class testCharacter(unittest.TestCase):
         print('test_set_weakness() ends')
 
     def test_get_weakness(self):
+        """ check that the correct attribute is returned"""
         print('test_get_weakness() starts')
         self.enemy1.weakness = 'testWeakness'
         self.assertEqual(self.enemy1.get_weakness(), 'testWeakness')
@@ -167,6 +188,8 @@ class testCharacter(unittest.TestCase):
         
         
     def test_get_likes(self):
+        """ check that the likes attribute does not exist in the base Character class
+        and that the correct attribute is returned from a Friend subclass instance"""
         print('test_get_likes() starts')
         try:
             self.character1.likes = ['a','b']
@@ -180,6 +203,9 @@ class testCharacter(unittest.TestCase):
         print('test_get_likes() ends')
         
     def test_set_likes(self):
+        """ check that the method does not exist for base Character instances
+        then check that the correct Friend subclass instance attribute can be
+        updated by the set_likes() method"""
         print('test_set_likes() starts')
         try:
             self.character1.set_likes(['a','b','c'])
@@ -193,6 +219,10 @@ class testCharacter(unittest.TestCase):
         print('test_set_likes() ends')
         
     def test_display_affection(self):
+        """ check that base Character and Enemy subclass instances do not have
+        this method
+        then check that for Friend subclass instances the correct
+        behaviour (output message) is displayed"""
         print('testdisplay_affection() starts')
         try:
             self.character1.display_affection()

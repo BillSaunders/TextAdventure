@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module room</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>room</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/pi/Documents/TextAdventure/rpg/room.py">/home/pi/Documents/TextAdventure/rpg/room.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;bill's&nbsp;<a href="#Room">Room</a>&nbsp;class</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="room.html#Room">Room</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Room">class <strong>Room</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Room-__init__"><strong>__init__</strong></a>(self, room_name)</dt><dd><tt>Constructor&nbsp;sets&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;room&nbsp;and&nbsp;initialises&nbsp;other&nbsp;attributes</tt></dd></dl>
+
+<dl><dt><a name="Room-describe"><strong>describe</strong></a>(self)</dt><dd><tt>prints&nbsp;the&nbsp;description<br>
+lists&nbsp;out&nbsp;any&nbsp;Items&nbsp;held&nbsp;in&nbsp;the&nbsp;room&nbsp;inventory</tt></dd></dl>
+
+<dl><dt><a name="Room-get_character"><strong>get_character</strong></a>(self)</dt><dd><tt>returns&nbsp;the&nbsp;character&nbsp;that&nbsp;is&nbsp;in&nbsp;the&nbsp;room</tt></dd></dl>
+
+<dl><dt><a name="Room-get_description"><strong>get_description</strong></a>(self)</dt><dd><tt>returns&nbsp;the&nbsp;room&nbsp;description</tt></dd></dl>
+
+<dl><dt><a name="Room-get_details"><strong>get_details</strong></a>(self)</dt><dd><tt>tells&nbsp;you&nbsp;where&nbsp;you&nbsp;are&nbsp;<br>
+invokes&nbsp;the&nbsp;self.<strong>describe</strong>&nbsp;method&nbsp;<br>
+tells&nbsp;you&nbsp;about&nbsp;any&nbsp;linked&nbsp;rooms&nbsp;and&nbsp;their&nbsp;direction</tt></dd></dl>
+
+<dl><dt><a name="Room-get_item"><strong>get_item</strong></a>(self, room_item_key)</dt><dd><tt>retrieves&nbsp;an&nbsp;Item&nbsp;from&nbsp;the&nbsp;inventory&nbsp;using&nbsp;the&nbsp;key&nbsp;supplied<br>
+deletes&nbsp;the&nbsp;Item&nbsp;from&nbsp;the&nbsp;inventory<br>
+and&nbsp;returns&nbsp;an&nbsp;Item</tt></dd></dl>
+
+<dl><dt><a name="Room-get_item_inventory"><strong>get_item_inventory</strong></a>(self)</dt><dd><tt>returns&nbsp;the&nbsp;room&nbsp;inventory</tt></dd></dl>
+
+<dl><dt><a name="Room-get_name"><strong>get_name</strong></a>(self)</dt><dd><tt>returns&nbsp;the&nbsp;room&nbsp;name</tt></dd></dl>
+
+<dl><dt><a name="Room-link_room"><strong>link_room</strong></a>(self, room_to_link_to, direction)</dt><dd><tt>adds&nbsp;link&nbsp;to&nbsp;the&nbsp;next&nbsp;room&nbsp;using&nbsp;the&nbsp;direction&nbsp;as&nbsp;the&nbsp;key</tt></dd></dl>
+
+<dl><dt><a name="Room-move"><strong>move</strong></a>(self, direction)</dt><dd><tt>if&nbsp;a&nbsp;valid&nbsp;direction&nbsp;is&nbsp;input,&nbsp;returns&nbsp;the&nbsp;linked&nbsp;room<br>
+otherwise,&nbsp;outputs&nbsp;a&nbsp;message&nbsp;and&nbsp;returns&nbsp;the&nbsp;current&nbsp;room</tt></dd></dl>
+
+<dl><dt><a name="Room-set_character"><strong>set_character</strong></a>(self, room_character)</dt><dd><tt>adds&nbsp;a&nbsp;character&nbsp;to&nbsp;the&nbsp;room</tt></dd></dl>
+
+<dl><dt><a name="Room-set_description"><strong>set_description</strong></a>(self, room_description)</dt><dd><tt>updates&nbsp;the&nbsp;room&nbsp;description&nbsp;attribute</tt></dd></dl>
+
+<dl><dt><a name="Room-set_item"><strong>set_item</strong></a>(self, room_item)</dt><dd><tt>adds&nbsp;an&nbsp;Item&nbsp;to&nbsp;the&nbsp;room's&nbsp;inventory&nbsp;using&nbsp;the&nbsp;Item&nbsp;name&nbsp;as&nbsp;the&nbsp;key</tt></dd></dl>
+
+<dl><dt><a name="Room-set_name"><strong>set_name</strong></a>(self, room_name)</dt><dd><tt>updates&nbsp;the&nbsp;room&nbsp;name</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>
