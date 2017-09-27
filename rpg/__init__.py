@@ -9,40 +9,62 @@ magic_flute = Item('magic flute','a rusty flute that makes time stand still when
 banana = Item('banana','a dangerous yellow fruit, lethal in the right hands')
 cheese = Item('cheese','a pungent smelling object that could save your life perhaps?')
 kitchen = Room('Kitchen')
-kitchen.set_description('A welcoming room, full of nice smells. The ivory coloured tiles on the walls reflect the light that streams in from the garden window.')
+
+kitchen.set_description('A welcoming room, full of nice smells.\n'
+                        'The ivory coloured tiles on the walls reflect the light that \n'
+                        'streams in from the garden window.')
 kitchen.set_item(magic_kettle)
 kitchen.set_item(cheese)
 entrance_hall = Room('Entrance Hall')
-entrance_hall.set_description('A long hallway which has doors leading off it and a staircase that goes up to the first floor.' + \
-                              ' There are exotic ornaments adorning the walls, a terracotta mask from Mexico, ' + \
-                              'a polished tin plate from India, a small colourful metal tray from Turkey... numerous framed pictures...')
+entrance_hall.set_description('A long hallway which has doors leading off it and \n'
+                              'a staircase that goes up to the first floor.\n'
+                              'There are exotic ornaments adorning the walls, \n'
+                              'a terracotta mask from Mexico, \n' 
+                              'a polished tin plate from India,\n'
+                              'a small colourful metal tray from Turkey...\n'
+                              'numerous framed pictures...')
 front_room = Room('Front room')
-front_room.set_description('a handsome room with large marble fireplace and bay window. The carpet is green and the walls beige')
+front_room.set_description('a handsome room with large marble fireplace and bay window.\n'
+                           'The carpet is green and the walls beige')
 music_room = Room('Music room')
-music_room.set_description('white walls, a large mirror above a small upright piano. There are bookshelves along the far wall and a rocking chair in the corner.' + \
-                           'The books are eclectic, several physics textbooks, tomes on various aspects of Chess, a 1980 copy of the encyclopedia Britannica...')
+music_room.set_description('white walls, a large mirror above a small upright piano.\n'
+                           'There are bookshelves along the far wall and a rocking chair in the corner.\n' + \
+                           'The books are eclectic, several physics textbooks,\n'
+                           'tomes on various aspects of Chess, \n'
+                           'a 1980 copy of the encyclopedia Britannica...')
 music_room.set_item(magic_flute)
 morning_room = Room('Morning room')
-morning_room.set_description('light and airy room, a low 1960s wooden cabinet contains bottles of coloured liquids, possibly for making cocktails!')
+morning_room.set_description('a light and airy room, with teracotta wallpaper \n'
+                             'a low 1960s wooden cabinet contains bottles of coloured liquids, \n'
+                             'possibly for making cocktails!')
 morning_room.set_item(flower)
 sun_room = Room('Sun room')
-sun_room.set_description('Large windows and double door to the garden. A comfortable room with polished wooden floor, walls are yellow and woodwork orange in colour.')
+sun_room.set_description('Large windows and double door to the garden. \n'
+                         'A comfortable room with polished wooden floor, \n'
+                         'walls are yellow and woodwork orange in colour.')
 sun_room.set_item(banana)
 sun_room.set_item(cheese)
 sun_room.set_item(magic_flute)
 utility_room = Room('utility room')
-utility_room.set_description('A simple sink, washing machine, and dryer are here. The tiled walls and floor give a cool feel to the room.')
+utility_room.set_description('A simple sink, washing machine, and dryer are here. \n'
+                             'The tiled walls and floor give a cool feel to the room.')
 shower_room = Room('Shower room')
-shower_room.set_description('A small tiled room with a window of frosted glass, a WC and a shower cubicle. A fan buzzes softly when the light is switched on. ')
+shower_room.set_description('A small tiled room with a window of frosted glass, \n'
+                            'a WC and a shower cubicle. \n'
+                            'A fan buzzes softly when the light is switched on. ')
 cupboard_under_stairs= Room('Cupboard')
-cupboard_under_stairs.set_description('you are in a small cupboard, a flight of steep steps leads downward into the dark. ' + \
-                                      'the walls are lined with shelves containing tins of tomatoes, jars of jam and other non perishable food items.')
+cupboard_under_stairs.set_description('you are in a small cupboard, \n'
+                                      'a flight of steep steps leads downward into the dark. \n'
+                                      'the walls are lined with shelves containing tins of tomatoes,\n'
+                                      ' jars of jam and other non perishable food items.')
 cellar_stairs = Room('Cellar Stairs')
 cellar_stairs.set_description('dark and narrow stairs leading downward')
 cellar = Room('Cellar')
-cellar.set_description('it is too dark to see but strange groaning sounds filter through the darkness, it is cold an scary')                          
+cellar.set_description('it is too dark to see but strange groaning sounds \n'
+                       'filter through the darkness, it is cold and scary')                          
 hall_stairs = Room('Hall Stairs')
-hall_stairs.set_description('A Victorian staircase with polished wooded spindrels and hand rail leading up and around.')
+hall_stairs.set_description('A Victorian staircase with polished wooded spindrels and \n'
+                            'hand rail leading up and around.')
 # link rooms
 kitchen.link_room(sun_room, 'East')
 kitchen.link_room(morning_room, 'North')
