@@ -21,6 +21,7 @@ entrance_hall.set_description('A long hallway which has doors leading off it and
                               'There are exotic ornaments adorning the walls, \n'
                               'a terracotta mask from Mexico, \n' 
                               'a polished tin plate from India,\n'
+                              'a jade turtle from Hong Kong,\n'
                               'a small colourful metal tray from Turkey...\n'
                               'numerous framed pictures...')
 front_room = Room('Front room')
