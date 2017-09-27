@@ -1,10 +1,9 @@
 import unittest
 from item import Item
-from character import Character, Enemy, Friend
+from character import Character, Enemy, Friend, Psychiatrist
 import sys
 from io import StringIO
 from unittest.mock import patch
-
 
 class testCharacter(unittest.TestCase):
 
@@ -17,7 +16,6 @@ class testCharacter(unittest.TestCase):
     @classmethod    
     def tearDownClass(cls):
         print('tearDownClass')
-
         
 
     """ setUp and tearDown run for each test """
@@ -74,7 +72,35 @@ class testCharacter(unittest.TestCase):
         self.assertEqual(constructed_character.likes,[])
         print('test_Friend_Constructor ends')
 
+    def test_Psychiatrist_Constructor(self):
+        """creates an Psychiatrist subclass instance and checks its attributes """
+        print('test_Psychiatrist_Constructor starts')
+        constructed_character = Psychiatrist('characterName','characterDescription')
+        self.assertEqual(constructed_character.name,'characterName')
+        self.assertEqual(constructed_character.description,'characterDescription')
+        self.assertEqual(constructed_character.disposition,'Friend')
+        print('test_Psychiatrist_Constructor ends')
+
+
+    def test_reflect(self):
+        """ checks that the correct token string is returned"""
+        print('test_reflect() starts')
+        sig1 = Psychiatrist('sig1')
+        token_string=sig1.reflect('I am angry')
+        print(token_string)
+        print('test_reflect() ends')
+
+
+    def test_analyze(self):
+        """ checks that the correct response is returned"""
+        print('test_analyse() starts')
+        sig = Psychiatrist('sig')
+        response=sig.analyze('tell me about your mother')
+        print(response)
+        print('test_analyse() ends')
+
     def test_describe(self):
+        
         """ checks that the correct description is output"""
         print('test_describe() starts')
         ## Stores output from print() in fakeOutput
@@ -183,9 +209,7 @@ class testCharacter(unittest.TestCase):
         print('test_get_weakness() starts')
         self.enemy1.weakness = 'testWeakness'
         self.assertEqual(self.enemy1.get_weakness(), 'testWeakness')
-        print('test_get_weakness() ends')
-
-        
+        print('test_get_weakness() ends')       
         
     def test_get_likes(self):
         """ check that the likes attribute does not exist in the base Character class

@@ -1,4 +1,4 @@
-from .character import Character, Enemy, Friend
+from .character import Character, Enemy, Friend, Psychiatrist
 from .item import Item
 from .room import Room
 
@@ -65,6 +65,10 @@ cellar.set_description('it is too dark to see but strange groaning sounds \n'
 hall_stairs = Room('Hall Stairs')
 hall_stairs.set_description('A Victorian staircase with polished wooded spindrels and \n'
                             'hand rail leading up and around.')
+the_street = Room('The Street')
+the_street.set_description('You leave the house and find yourself back \n'
+                           'in the street. Fare well brave adventurer \n'
+                           'the world awaits you!')
 # link rooms
 kitchen.link_room(sun_room, 'East')
 kitchen.link_room(morning_room, 'North')
@@ -84,6 +88,7 @@ entrance_hall.link_room(music_room, 'South East')
 entrance_hall.link_room(morning_room, 'South')
 entrance_hall.link_room(cupboard_under_stairs, 'West')
 entrance_hall.link_room(hall_stairs, 'Up')
+entrance_hall.link_room(the_street, 'North')
 hall_stairs.link_room(entrance_hall, 'Down')                           
 cupboard_under_stairs.link_room(entrance_hall, 'East')
 cupboard_under_stairs.link_room(cellar_stairs, 'Down')
@@ -94,18 +99,23 @@ cellar.link_room(cellar_stairs, 'Up')
 
 
 piano = Item('piano','Polished Rosewood Piano Forte')
-piano.describe()
+#piano.describe()
 
 dave = Enemy('Dave','A smelly zombie')
 dave.set_conversation("Ugh, did din, I want to eat you")
 dave.set_weakness(cheese)
 
-daisy = Friend('daisy','A lovely fairy')
+daisy = Friend('Daisy','A lovely fairy')
 daisy.set_conversation("oh what a handsome adventurer")
 daisy.set_likes(['cheese','magic flute','rose'])
 
+sigmund = Psychiatrist('Sigmund','A smartly dressed person wearing \n'
+                       'a three piece suit and red polkadot bowtie \n'
+                       'you look worried, maybe you should talk with him?')
+
 music_room.set_character(dave)
 kitchen.set_character(daisy)
+front_room.set_character(sigmund)
 
 backpack = {}
 command_dictionary = {'?':'list valid commands', 'take item':'remove item from room and put in backpack',
@@ -117,6 +127,9 @@ current_room = entrance_hall
 while True:
     print("\n")
     current_room.get_details()
+    if current_room.get_name() == 'The Street':
+        print('end of game')
+        break
     inhabitant = current_room.get_character()
     if inhabitant is not None:
         inhabitant.describe()
