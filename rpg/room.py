@@ -8,6 +8,7 @@ class Room():
         self.linked_rooms = {}
         self.character = None
         self.inventory = {}
+        self.first_time_here = True
         
     def set_item(self, room_item):
         """ adds an Item to the room's inventory using the Item name as the key"""
@@ -53,6 +54,7 @@ class Room():
         """ prints the description
         lists out any Items held in the room inventory"""
         print(self.description)
+        self.first_time_here = False
         if self.inventory is not None:
             for room_item in self.inventory.keys():
              print("there is a " + room_item + ' here')
@@ -68,7 +70,8 @@ class Room():
         invokes the self.describe method 
         tells you about any linked rooms and their direction"""
         print('You are in the ' + self.get_name())
-        self.describe()
+        if self.first_time_here == True:
+            self.describe()
         for direction in self.linked_rooms:
             room = self.linked_rooms[direction]
             print('The '+ room.get_name() + ' is ' + direction)
