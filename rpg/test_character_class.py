@@ -184,7 +184,7 @@ class testCharacter(unittest.TestCase):
         #expect defeat = return False
         with patch('sys.stdout', new=StringIO()) as fakeOutput:
             self.assertFalse(self.enemy1.fight(self.item1))
-        expected ='Alas TestItemName1 was ineffective\ntestEnemyName1 crushes you, puny adventurer'
+        expected ='Alas the TestItemName1 was ineffective\ntestEnemyName1 crushes you, puny adventurer'
         self.check_printed_output(fakeOutput,expected,'test_fight 3')
         
         #try to fight Enemy with weakness item1

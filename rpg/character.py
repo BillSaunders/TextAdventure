@@ -10,6 +10,7 @@ class Character():
         self.description = char_description
         self.conversation = None
         self.disposition = None
+        self.held_item = None
 
     # Describe this character
     def describe(self):
@@ -45,6 +46,15 @@ class Character():
         print(self.name + " doesn't want to fight with you")
         return True
 
+    def accepts_gift(self, gift_name):
+        return False
+
+    def set_held_item(self, item):
+        self.held_item = item
+
+    def get_held_item(self):
+        return self.held_item
+
 class Enemy(Character):
     
     def __init__(self, char_name, char_description):
@@ -69,7 +79,7 @@ class Enemy(Character):
             print("You fend off " + self.name + " with the " + combat_item.get_name())
             return True
         else:
-            print('Alas ' + combat_item.get_name() + ' was ineffective')
+            print('Alas the ' + combat_item.get_name() + ' was ineffective')
             print(self.name + " crushes you, puny adventurer")
             return False
             
@@ -93,9 +103,15 @@ class Friend(Character):
         """to be extended...;) """
         print(self.name + " gives you a sloppy kiss!")
 
+    def accepts_gift(self, gift_name):
+        if gift_name in self.get_likes():           
+            self.display_affection()
+            return True
+        else:
+            print(self.name + ' does not like the ' + gift_name)
+            return False
+
 class Psychiatrist(Character):
-##    import re
-##    import random
 
     reflections = {
         "am": "are",
