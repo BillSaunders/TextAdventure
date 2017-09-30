@@ -1,6 +1,8 @@
 from .character import Character, Enemy, Friend, Psychiatrist
 from .item import Item
 from .room import Room
+from .commandHandler import CommandHandler
+from .backpack import Backpack
 
 """initialises the game objects, rooms and items, and runs the main loop"""
 flower = Item('rose',' a lovely flower with thorns, pink petals and strong scent')
@@ -9,6 +11,7 @@ magic_flute = Item('magic flute','a rusty flute that makes time stand still when
 banana = Item('banana','a dangerous yellow fruit, lethal in the right hands')
 cheese = Item('cheese','a pungent smelling object that could save your life perhaps?')
 kitchen = Room('Kitchen')
+
 
 kitchen.set_description('A welcoming room, full of nice smells.\n'
                         'There is bread baking in the oven and some sort of curry \n'
@@ -28,7 +31,7 @@ entrance_hall.set_description('A long hallway which has doors leading off it and
                               'a small colourful metal tray from Turkey...\n'
                               'numerous framed pictures...\n'
                               'A dark green jade turtle from Hong Kong shimmers on the telephone table \n'
-                              'by the front door. Its surface smooth and sensual to the touch. \n'
+                              'by the front door. Its surface smooth and sensuous to the touch. \n'
                               'Whoever acquired this piece has exquisite (and expensive) taste')
 front_room = Room('Front room')
 front_room.set_description('a handsome room with large marble fireplace and bay window.\n'
@@ -130,7 +133,7 @@ cellar.link_room(cellar_stairs, 'Up')
 piano = Item('piano','Polished Rosewood Piano Forte')
 #piano.describe()
 
-dave = Enemy('Dave','A smelly zombie')
+dave = Enemy('Dave','A sad zombie')
 dave.set_conversation("Ugh, did din, I want to eat you")
 dave.set_weakness(cheese)
 
@@ -146,80 +149,9 @@ music_room.set_character(dave)
 kitchen.set_character(daisy)
 front_room.set_character(sigmund)
 
-backpack = {}
-command_dictionary = {'?':'list valid commands', 'take item':'remove item from room and put in backpack',
-                      'talk':'ask a character to talk','fight':'fight with character','describe':'describe current room', 
-                      'give item':'give an item to a character','backpack':'lists backpack content'}
-
+backpack = Backpack()
 current_room = entrance_hall
 
-while True:
-    print("\n")
-    current_room.get_details()
-    if current_room.get_name() == 'The Street':
-        print('end of game')
-        break
-    inhabitant = current_room.get_character()
-    if inhabitant is not None:
-        inhabitant.describe()
-        inhabited = True
-    else:
-        inhabited = False
-    command = input("> ")
-    if command in ["North","South","East","West","South East","North West","Up","Down"]:   
-        current_room = current_room.move(command)
-    elif command == '?':
-        for cmd, cmd_description  in sorted(command_dictionary.items()):
-            print(cmd + ' : ' + cmd_description + "\n")
-    elif command == 'backpack':
-        for i in backpack.keys():
-            print(i)
-    elif command == 'take item':
-        room_inventory = current_room.get_item_inventory().copy()
-        if len(room_inventory) > 0 :
-            for room_item_key in room_inventory.keys():
-                if input("do you want the " + room_item_key + " Y/N ?") == 'Y':
-                    room_item = current_room.get_item(room_item_key)
-                    backpack[room_item.get_name()] = room_item
-            print('backpack now contains ...')
-            print(list(backpack.keys()))
-        else:
-            print("there is nothing to take here")
-    elif command == "talk" and inhabited == True:
-        inhabitant.talk()
-    elif command == "describe":
-        current_room.describe()
-    elif command == 'fight' and inhabited == True:
-        weapon = input("what do you want to fight with? ")
-        if weapon in backpack:   
-            if inhabitant.fight(backpack[weapon]) == True:
-                print("you survived")
-            else:
-                print("you died")
-                break
-        else:
-            print('you do not have that item in your backpack')
-    elif command == 'give item':
-        if inhabitant.get_disposition() == "Friend":
-            print('backpack contains ...')
-            print(list(backpack.keys())) 
-            gift = input("what do you want to give " + inhabitant.name + " ? ")
-            
-            if gift in backpack.keys():
-                if gift in inhabitant.get_likes():
-                    del backpack[gift]
-                    print('backpack now contains.. ')
-                    print(list(backpack.keys()))
-                    inhabitant.display_affection()
-                else:
-                    print(inhabitant.get_name() + ' does not like the ' + gift)
-            else:
-                print('you do not have that item in your backpack')
-        else:
-            inhabitant.set_conversation('fight me you coward')
-            inhabitant.talk()
-    else:
-        print("so what next?")
 
 
 

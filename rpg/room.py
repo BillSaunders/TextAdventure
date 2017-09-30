@@ -60,6 +60,10 @@ class Room():
              print("there is a " + room_item + ' here')
         else:
             print("the room is empty of portable items")
+        if self.character is not None:
+            self.character.describe()
+        else:
+            print("there is nobody here..you are alone")
     
     def link_room(self,  room_to_link_to, direction):
         """ adds link to the next room using the direction as the key"""
